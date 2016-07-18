@@ -183,3 +183,5 @@ Makefile.in
 /FindCmd/findutils-4.6.0/install-sh
 /FindCmd/findutils-4.6.0/missing
 /FindCmd/findutils-4.6.0/stamp-h1
+
+/FindCmd/findutils-4.6.0/config.log
