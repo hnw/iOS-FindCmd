@@ -295,7 +295,36 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/build-aux/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-LIBRARIES = $(noinst_LIBRARIES)
+am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
+am__vpath_adj = case $$p in \
+    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+    *) f=$$p;; \
+  esac;
+am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
+am__install_max = 40
+am__nobase_strip_setup = \
+  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
+am__nobase_strip = \
+  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
+am__nobase_list = $(am__nobase_strip_setup); \
+  for p in $$list; do echo "$$p $$p"; done | \
+  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
+  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
+    if (++n[$$2] == $(am__install_max)) \
+      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
+    END { for (dir in files) print dir, files[dir] }'
+am__base_list = \
+  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
+  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
+am__uninstall_files_from_dir = { \
+  test -z "$$files" \
+    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
+    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
+         $(am__cd) "$$dir" && rm -f $$files; }; \
+  }
+am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" \
+	"$(DESTDIR)$(man1dir)"
+LIBRARIES = $(lib_LIBRARIES) $(noinst_LIBRARIES)
 AM_V_AR = $(am__v_AR_@AM_V@)
 am__v_AR_ = $(am__v_AR_@AM_DEFAULT_V@)
 am__v_AR_0 = @echo "  AR      " $@;
@@ -306,7 +335,10 @@ am_libfindtools_a_OBJECTS = finddata.$(OBJEXT) fstype.$(OBJEXT) \
 	parser.$(OBJEXT) pred.$(OBJEXT) exec.$(OBJEXT) tree.$(OBJEXT) \
 	util.$(OBJEXT) sharefile.$(OBJEXT) print.$(OBJEXT)
 libfindtools_a_OBJECTS = $(am_libfindtools_a_OBJECTS)
-am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(man1dir)"
+libftsfind_a_DEPENDENCIES = ./libfindtools.a ../lib/libfind.a \
+	../gl/lib/libgnulib.a
+am_libftsfind_a_OBJECTS = libftsfind_a-ftsfind.$(OBJEXT)
+libftsfind_a_OBJECTS = $(am_libftsfind_a_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
 am_find_OBJECTS = ftsfind.$(OBJEXT)
 find_OBJECTS = $(am_find_OBJECTS)
@@ -343,6 +375,10 @@ DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
+AM_V_lt = $(am__v_lt_@AM_V@)
+am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+am__v_lt_0 = --silent
+am__v_lt_1 = 
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 AM_V_CC = $(am__v_CC_@AM_V@)
@@ -355,9 +391,10 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(libfindtools_a_SOURCES) $(find_SOURCES) $(oldfind_SOURCES)
-DIST_SOURCES = $(libfindtools_a_SOURCES) $(find_SOURCES) \
-	$(oldfind_SOURCES)
+SOURCES = $(libfindtools_a_SOURCES) $(libftsfind_a_SOURCES) \
+	$(find_SOURCES) $(oldfind_SOURCES)
+DIST_SOURCES = $(libfindtools_a_SOURCES) $(libftsfind_a_SOURCES) \
+	$(find_SOURCES) $(oldfind_SOURCES)
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
 	ctags-recursive dvi-recursive html-recursive info-recursive \
 	install-data-recursive install-dvi-recursive \
@@ -371,33 +408,6 @@ am__can_run_installinfo = \
     n|no|NO) false;; \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
-am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
-am__vpath_adj = case $$p in \
-    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
-    *) f=$$p;; \
-  esac;
-am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
-am__install_max = 40
-am__nobase_strip_setup = \
-  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
-am__nobase_strip = \
-  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
-am__nobase_list = $(am__nobase_strip_setup); \
-  for p in $$list; do echo "$$p $$p"; done | \
-  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
-  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
-    if (++n[$$2] == $(am__install_max)) \
-      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
-    END { for (dir in files) print dir, files[dir] }'
-am__base_list = \
-  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
-  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
-am__uninstall_files_from_dir = { \
-  test -z "$$files" \
-    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
-    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
-         $(am__cd) "$$dir" && rm -f $$files; }; \
-  }
 man1dir = $(mandir)/man1
 NROFF = nroff
 MANS = $(man_MANS)
@@ -1698,8 +1708,13 @@ top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = std-options
 AM_CFLAGS = $(WARN_CFLAGS)
 noinst_LIBRARIES = libfindtools.a
+lib_LIBRARIES = libftsfind.a
 libfindtools_a_SOURCES = finddata.c fstype.c parser.c pred.c exec.c tree.c util.c sharefile.c print.c
 find_SOURCES = ftsfind.c
+libftsfind_a_SOURCES = ftsfind.c
+libftsfind_a_CFLAGS = "-Dmain=find_main (int, char **);  int find_main"
+libftsfind_a_AR = libtool -static -o
+libftsfind_a_LIBADD = ./libfindtools.a ../lib/libfind.a ../gl/lib/libgnulib.a
 oldfind_SOURCES = oldfind.c
 man_MANS = find.1
 EXTRA_DIST = defs.h sharefile.h print.h $(man_MANS)
@@ -1745,6 +1760,37 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
+install-libLIBRARIES: $(lib_LIBRARIES)
+	@$(NORMAL_INSTALL)
+	@list='$(lib_LIBRARIES)'; test -n "$(libdir)" || list=; \
+	list2=; for p in $$list; do \
+	  if test -f $$p; then \
+	    list2="$$list2 $$p"; \
+	  else :; fi; \
+	done; \
+	test -z "$$list2" || { \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(libdir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(libdir)" || exit 1; \
+	  echo " $(INSTALL_DATA) $$list2 '$(DESTDIR)$(libdir)'"; \
+	  $(INSTALL_DATA) $$list2 "$(DESTDIR)$(libdir)" || exit $$?; }
+	@$(POST_INSTALL)
+	@list='$(lib_LIBRARIES)'; test -n "$(libdir)" || list=; \
+	for p in $$list; do \
+	  if test -f $$p; then \
+	    $(am__strip_dir) \
+	    echo " ( cd '$(DESTDIR)$(libdir)' && $(RANLIB) $$f )"; \
+	    ( cd "$(DESTDIR)$(libdir)" && $(RANLIB) $$f ) || exit $$?; \
+	  else :; fi; \
+	done
+
+uninstall-libLIBRARIES:
+	@$(NORMAL_UNINSTALL)
+	@list='$(lib_LIBRARIES)'; test -n "$(libdir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	dir='$(DESTDIR)$(libdir)'; $(am__uninstall_files_from_dir)
+
+clean-libLIBRARIES:
+	-test -z "$(lib_LIBRARIES)" || rm -f $(lib_LIBRARIES)
 
 clean-noinstLIBRARIES:
 	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
@@ -1753,6 +1799,11 @@ libfindtools.a: $(libfindtools_a_OBJECTS) $(libfindtools_a_DEPENDENCIES) $(EXTRA
 	$(AM_V_at)-rm -f libfindtools.a
 	$(AM_V_AR)$(libfindtools_a_AR) libfindtools.a $(libfindtools_a_OBJECTS) $(libfindtools_a_LIBADD)
 	$(AM_V_at)$(RANLIB) libfindtools.a
+
+libftsfind.a: $(libftsfind_a_OBJECTS) $(libftsfind_a_DEPENDENCIES) $(EXTRA_libftsfind_a_DEPENDENCIES) 
+	$(AM_V_at)-rm -f libftsfind.a
+	$(AM_V_AR)$(libftsfind_a_AR) libftsfind.a $(libftsfind_a_OBJECTS) $(libftsfind_a_LIBADD)
+	$(AM_V_at)$(RANLIB) libftsfind.a
 install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
 	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
@@ -1833,6 +1884,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/finddata.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fstype.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftsfind.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libftsfind_a-ftsfind.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/oldfind.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/parser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pred.Po@am__quote@
@@ -1854,6 +1906,20 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+
+libftsfind_a-ftsfind.o: ftsfind.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libftsfind_a_CFLAGS) $(CFLAGS) -MT libftsfind_a-ftsfind.o -MD -MP -MF $(DEPDIR)/libftsfind_a-ftsfind.Tpo -c -o libftsfind_a-ftsfind.o `test -f 'ftsfind.c' || echo '$(srcdir)/'`ftsfind.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libftsfind_a-ftsfind.Tpo $(DEPDIR)/libftsfind_a-ftsfind.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ftsfind.c' object='libftsfind_a-ftsfind.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libftsfind_a_CFLAGS) $(CFLAGS) -c -o libftsfind_a-ftsfind.o `test -f 'ftsfind.c' || echo '$(srcdir)/'`ftsfind.c
+
+libftsfind_a-ftsfind.obj: ftsfind.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libftsfind_a_CFLAGS) $(CFLAGS) -MT libftsfind_a-ftsfind.obj -MD -MP -MF $(DEPDIR)/libftsfind_a-ftsfind.Tpo -c -o libftsfind_a-ftsfind.obj `if test -f 'ftsfind.c'; then $(CYGPATH_W) 'ftsfind.c'; else $(CYGPATH_W) '$(srcdir)/ftsfind.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libftsfind_a-ftsfind.Tpo $(DEPDIR)/libftsfind_a-ftsfind.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ftsfind.c' object='libftsfind_a-ftsfind.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libftsfind_a_CFLAGS) $(CFLAGS) -c -o libftsfind_a-ftsfind.obj `if test -f 'ftsfind.c'; then $(CYGPATH_W) 'ftsfind.c'; else $(CYGPATH_W) '$(srcdir)/ftsfind.c'; fi`
 install-man1: $(man_MANS)
 	@$(NORMAL_INSTALL)
 	@list1=''; \
@@ -2061,7 +2127,7 @@ check: check-recursive
 all-am: Makefile $(LIBRARIES) $(PROGRAMS) $(MANS)
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(man1dir)"; do \
+	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" "$(DESTDIR)$(man1dir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-recursive
@@ -2097,7 +2163,8 @@ maintainer-clean-generic:
 clean: clean-recursive
 
 clean-am: clean-binPROGRAMS clean-checkPROGRAMS clean-generic \
-	clean-local clean-noinstLIBRARIES mostlyclean-am
+	clean-libLIBRARIES clean-local clean-noinstLIBRARIES \
+	mostlyclean-am
 
 distclean: distclean-recursive
 	-rm -rf ./$(DEPDIR)
@@ -2123,7 +2190,7 @@ install-dvi: install-dvi-recursive
 
 install-dvi-am:
 
-install-exec-am: install-binPROGRAMS
+install-exec-am: install-binPROGRAMS install-libLIBRARIES
 
 install-html: install-html-recursive
 
@@ -2162,7 +2229,8 @@ ps: ps-recursive
 
 ps-am:
 
-uninstall-am: uninstall-binPROGRAMS uninstall-man
+uninstall-am: uninstall-binPROGRAMS uninstall-libLIBRARIES \
+	uninstall-man
 
 uninstall-man: uninstall-man1
 
@@ -2170,19 +2238,20 @@ uninstall-man: uninstall-man1
 
 .PHONY: $(am__recursive_targets) CTAGS GTAGS TAGS all all-am check \
 	check-am clean clean-binPROGRAMS clean-checkPROGRAMS \
-	clean-generic clean-local clean-noinstLIBRARIES cscopelist-am \
-	ctags ctags-am dist-hook distclean distclean-compile \
-	distclean-generic distclean-tags distdir dvi dvi-am html \
-	html-am info info-am install install-am install-binPROGRAMS \
-	install-data install-data-am install-dvi install-dvi-am \
-	install-exec install-exec-am install-html install-html-am \
-	install-info install-info-am install-man install-man1 \
-	install-pdf install-pdf-am install-ps install-ps-am \
-	install-strip installcheck installcheck-am \
-	installcheck-binPROGRAMS installdirs installdirs-am \
-	maintainer-clean maintainer-clean-generic mostlyclean \
-	mostlyclean-compile mostlyclean-generic pdf pdf-am ps ps-am \
-	tags tags-am uninstall uninstall-am uninstall-binPROGRAMS \
+	clean-generic clean-libLIBRARIES clean-local \
+	clean-noinstLIBRARIES cscopelist-am ctags ctags-am dist-hook \
+	distclean distclean-compile distclean-generic distclean-tags \
+	distdir dvi dvi-am html html-am info info-am install \
+	install-am install-binPROGRAMS install-data install-data-am \
+	install-dvi install-dvi-am install-exec install-exec-am \
+	install-html install-html-am install-info install-info-am \
+	install-libLIBRARIES install-man install-man1 install-pdf \
+	install-pdf-am install-ps install-ps-am install-strip \
+	installcheck installcheck-am installcheck-binPROGRAMS \
+	installdirs installdirs-am maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-compile \
+	mostlyclean-generic pdf pdf-am ps ps-am tags tags-am uninstall \
+	uninstall-am uninstall-binPROGRAMS uninstall-libLIBRARIES \
 	uninstall-man uninstall-man1
 
 .PRECIOUS: Makefile

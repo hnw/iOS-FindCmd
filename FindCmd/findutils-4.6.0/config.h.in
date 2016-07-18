@@ -3146,3 +3146,8 @@
 
 /* Define as a macro for copying va_list variables. */
 #undef va_copy
+
+
+#include <unistd.h>
+#include <pthread.h>
+#define exit(retval) {fflush(stdout);close(STDOUT_FILENO);fflush(stderr);close(STDERR_FILENO);pthread_exit((void *)retval);}

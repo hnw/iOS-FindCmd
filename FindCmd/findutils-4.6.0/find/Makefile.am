@@ -3,6 +3,7 @@ AM_CFLAGS = $(WARN_CFLAGS)
 localedir = $(datadir)/locale
 
 noinst_LIBRARIES = libfindtools.a
+lib_LIBRARIES = libftsfind.a
 libfindtools_a_SOURCES = finddata.c fstype.c parser.c pred.c exec.c tree.c util.c sharefile.c print.c
 
 # We always build two versions of find, one with fts (called "find"),
@@ -11,6 +12,10 @@ libfindtools_a_SOURCES = finddata.c fstype.c parser.c pred.c exec.c tree.c util.
 bin_PROGRAMS     = find
 check_PROGRAMS   = oldfind
 find_SOURCES     = ftsfind.c
+libftsfind_a_SOURCES = ftsfind.c
+libftsfind_a_CFLAGS  = "-Dmain=find_main (int, char **);  int find_main"
+libftsfind_a_AR      = libtool -static -o
+libftsfind_a_LIBADD  = ./libfindtools.a ../lib/libfind.a ../gl/lib/libgnulib.a
 oldfind_SOURCES  = oldfind.c
 man_MANS         = find.1
 
