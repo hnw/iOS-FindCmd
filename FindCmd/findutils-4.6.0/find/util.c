@@ -956,14 +956,13 @@ now(void)
   struct timespec retval;
   struct timeval tv;
   time_t t;
-#if 0
+
   if (0 == gettimeofday (&tv, NULL))
     {
       retval.tv_sec  = tv.tv_sec;
       retval.tv_nsec = tv.tv_usec * 1000; /* convert unit from microseconds to nanoseconds */
       return retval;
     }
-#endif
   t = time (NULL);
   assert (t != (time_t)-1);
   retval.tv_sec = t;

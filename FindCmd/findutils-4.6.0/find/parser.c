@@ -58,9 +58,8 @@
 #include "fdleak.h"
 #include "findutils-version.h"
 
-#include <unistd.h>
-#include <pthread.h>
-#define exit(retval) {close(STDOUT_FILENO);close(STDERR_FILENO);pthread_exit((void *)retval);}
+
+
 
 #if ENABLE_NLS
 # include <libintl.h>
