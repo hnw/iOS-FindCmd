@@ -653,6 +653,14 @@ main (int argc, char **argv)
   int end_of_leading_options = 0; /* First arg after any -H/-L etc. */
   struct predicate *eval_tree;
 
+  options = options_initialized;
+  state = state_initialized;
+  ftsoptions = FTS_NOSTAT|FTS_TIGHT_CYCLE_CHECK|FTS_CWDFD|FTS_VERBATIM;
+  prev_depth = INT_MIN;
+  curr_fd = -1;
+  num_start_points = 0;
+  first_nonoption_arg = NULL;
+
   if (argv[0])
     set_program_name (argv[0]);
   else

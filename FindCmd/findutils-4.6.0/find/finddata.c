@@ -29,5 +29,7 @@
 
 
 struct options options;
+struct options options_initialized;
 struct state state;
+struct state state_initialized;
 struct saved_cwd *initial_wd = NULL;

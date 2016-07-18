@@ -671,7 +671,14 @@ int launch (struct buildcmd_control *ctl, void *usercontext, int argc, char **ar
 
 /* finddata.c */
 extern struct options options;
+extern struct options options_initialized;
 extern struct state state;
+extern struct state state_initialized;
 extern struct saved_cwd *initial_wd;
+
+/* tree.c */
+extern size_t num_start_points;
+
+extern const char *first_nonoption_arg;
 
 #endif

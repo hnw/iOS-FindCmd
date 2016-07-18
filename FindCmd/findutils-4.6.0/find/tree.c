@@ -58,7 +58,7 @@ static struct predicate *last_pred = NULL;
 
 /* The starting points. */
 static char **start_points;
-static size_t num_start_points = 0;
+size_t num_start_points = 0;
 
 
 

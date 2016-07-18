@@ -330,7 +330,7 @@ static struct parser_table const parse_table[] =
 };
 
 
-static const char *first_nonoption_arg = NULL;
+const char *first_nonoption_arg = NULL;
 static const struct parser_table *noop = NULL;
 
 static int

@@ -16,7 +16,9 @@ public class FindCmd: UnixyCmd {
             let argc = Int32(unsafeBitCast(arg[0], Int.self))
             var argv = unsafeBitCast(arg[1], CharPtrArray.self)
             let retval = unsafeBitCast(Int(find_main(argc, &argv)), VoidPtr.self)
+            fflush(stdout)
             close(STDOUT_FILENO)
+            fflush(stderr)
             close(STDERR_FILENO)
             return retval
             }, unsafeBitCast(thread_arg, VoidPtr.self))
