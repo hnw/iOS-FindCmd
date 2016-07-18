@@ -23,9 +23,9 @@ nodist_locate_TEXINFOS = dblocation.texi
 
 AM_CPPFLAGS = -I$(top_srcdir)/lib -I../gl/lib -I$(top_srcdir)/gl/lib -I../intl -DLOCATE_DB=\"$(LOCATE_DB)\" -DLOCALEDIR=\"$(localedir)\"
 
-LDADD = ../lib/libfind.a ../gl/lib/libgnulib.a $(LIB_CLOSE) $(LIBINTL)
+LDADD = ../lib/libfind.la ../gl/lib/libgnulib.la $(LIB_CLOSE) $(LIBINTL)
 
-$(PROGRAMS) $(LIBPROGRAMS): ../lib/libfind.a ../gl/lib/libgnulib.a
+$(PROGRAMS) $(LIBPROGRAMS): ../lib/libfind.la ../gl/lib/libgnulib.la
 
 # We generate updatedb from the Makefile rather than with AC_OUTPUT in
 # configure.ac in order to allow the user better control of what goes

@@ -10,6 +10,10 @@
 		FE3033451D3B4FF000D5DAB6 /* FindCmd.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3033441D3B4FF000D5DAB6 /* FindCmd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE30334C1D3B4FF000D5DAB6 /* FindCmd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3033411D3B4FF000D5DAB6 /* FindCmd.framework */; };
 		FE3033511D3B4FF000D5DAB6 /* FindCmdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3033501D3B4FF000D5DAB6 /* FindCmdTests.swift */; };
+		FE30335E1D3B8D3F00D5DAB6 /* FindCmd.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE30335D1D3B8D3F00D5DAB6 /* FindCmd.swift */; };
+		FE3033601D3B8E3200D5DAB6 /* CStringArray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE30335F1D3B8E3200D5DAB6 /* CStringArray.framework */; };
+		FE3033621D3B8E5B00D5DAB6 /* UnixyCmd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3033611D3B8E5B00D5DAB6 /* UnixyCmd.framework */; };
+		FE3033651D3BD2E200D5DAB6 /* libftsfind.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3033641D3BD2E200D5DAB6 /* libftsfind.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +33,10 @@
 		FE30334B1D3B4FF000D5DAB6 /* FindCmdTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindCmdTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3033501D3B4FF000D5DAB6 /* FindCmdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCmdTests.swift; sourceTree = "<group>"; };
 		FE3033521D3B4FF000D5DAB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE30335D1D3B8D3F00D5DAB6 /* FindCmd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindCmd.swift; sourceTree = "<group>"; };
+		FE30335F1D3B8E3200D5DAB6 /* CStringArray.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CStringArray.framework; path = Carthage/Build/iOS/CStringArray.framework; sourceTree = "<group>"; };
+		FE3033611D3B8E5B00D5DAB6 /* UnixyCmd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnixyCmd.framework; path = Carthage/Build/iOS/UnixyCmd.framework; sourceTree = "<group>"; };
+		FE3033641D3BD2E200D5DAB6 /* libftsfind.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftsfind.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE3033621D3B8E5B00D5DAB6 /* UnixyCmd.framework in Frameworks */,
+				FE3033601D3B8E3200D5DAB6 /* CStringArray.framework in Frameworks */,
+				FE3033651D3BD2E200D5DAB6 /* libftsfind.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +64,8 @@
 		FE3033371D3B4FF000D5DAB6 = {
 			isa = PBXGroup;
 			children = (
+				FE3033611D3B8E5B00D5DAB6 /* UnixyCmd.framework */,
+				FE30335F1D3B8E3200D5DAB6 /* CStringArray.framework */,
 				FE3033431D3B4FF000D5DAB6 /* FindCmd */,
 				FE30334F1D3B4FF000D5DAB6 /* FindCmdTests */,
 				FE3033421D3B4FF000D5DAB6 /* Products */,
@@ -71,8 +84,10 @@
 		FE3033431D3B4FF000D5DAB6 /* FindCmd */ = {
 			isa = PBXGroup;
 			children = (
+				FE3033641D3BD2E200D5DAB6 /* libftsfind.a */,
 				FE3033441D3B4FF000D5DAB6 /* FindCmd.h */,
 				FE3033461D3B4FF000D5DAB6 /* Info.plist */,
+				FE30335D1D3B8D3F00D5DAB6 /* FindCmd.swift */,
 			);
 			path = FindCmd;
 			sourceTree = "<group>";
@@ -108,6 +123,7 @@
 				FE30333D1D3B4FF000D5DAB6 /* Frameworks */,
 				FE30333E1D3B4FF000D5DAB6 /* Headers */,
 				FE30333F1D3B4FF000D5DAB6 /* Resources */,
+				FE3033631D3B8E6000D5DAB6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -189,11 +205,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		FE3033631D3B8E6000D5DAB6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/CStringArray.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/UnixyCmd.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FE30333C1D3B4FF000D5DAB6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE30335E1D3B8D3F00D5DAB6 /* FindCmd.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,29 +345,48 @@
 		FE3033561D3B4FF000D5DAB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FindCmd/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FindCmd",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hnw.FindCmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		FE3033571D3B4FF000D5DAB6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FindCmd/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FindCmd",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hnw.FindCmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

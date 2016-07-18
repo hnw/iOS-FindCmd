@@ -77,7 +77,7 @@ playground.xcworkspace
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
+Carthage/Checkouts
 
 Carthage/Build
 
@@ -92,6 +92,46 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+
+
+### https://raw.github.com/github/gitignore/c0de8bc140e3079c93f2970be853d310602a5ddb/C.gitignore
+
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
 
 
 ### https://raw.github.com/github/gitignore/c0de8bc140e3079c93f2970be853d310602a5ddb/Global/OSX.gitignore
@@ -123,3 +163,23 @@ Temporary Items
 .apdisk
 
 
+### https://raw.github.com/github/gitignore/c0de8bc140e3079c93f2970be853d310602a5ddb/autotools.gitignore
+
+# http://www.gnu.org/software/automake
+
+Makefile.in
+
+# http://www.gnu.org/software/autoconf
+
+/FindCmd/findutils-4.6.0/autom4te.cache
+/FindCmd/findutils-4.6.0/autoscan.log
+/FindCmd/findutils-4.6.0/autoscan-*.log
+/FindCmd/findutils-4.6.0/aclocal.m4
+/FindCmd/findutils-4.6.0/compile
+/FindCmd/findutils-4.6.0/config.h.in
+/FindCmd/findutils-4.6.0/configure
+/FindCmd/findutils-4.6.0/configure.scan
+/FindCmd/findutils-4.6.0/depcomp
+/FindCmd/findutils-4.6.0/install-sh
+/FindCmd/findutils-4.6.0/missing
+/FindCmd/findutils-4.6.0/stamp-h1

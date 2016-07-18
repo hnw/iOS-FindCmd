@@ -41,12 +41,12 @@ MAINTAINERCLEANFILES =
 AM_CPPFLAGS =
 AM_CFLAGS =
 
-noinst_LIBRARIES += libgnulib.a
+noinst_LTLIBRARIES += libgnulib.la
 
-libgnulib_a_SOURCES =
-libgnulib_a_LIBADD = $(gl_LIBOBJS)
-libgnulib_a_DEPENDENCIES = $(gl_LIBOBJS)
-EXTRA_libgnulib_a_SOURCES =
+libgnulib_la_SOURCES =
+libgnulib_la_LIBADD = $(gl_LIBOBJS)
+libgnulib_la_DEPENDENCIES = $(gl_LIBOBJS)
+EXTRA_libgnulib_la_SOURCES =
 
 ## begin gnulib module absolute-header
 
@@ -60,11 +60,11 @@ HAVE_INCLUDE_NEXT = (__GNUC__ || 60000000 <= __DECC_VER)
 ## begin gnulib module alloca
 
 
-libgnulib_a_LIBADD += @ALLOCA@
-libgnulib_a_DEPENDENCIES += @ALLOCA@
+libgnulib_la_LIBADD += @ALLOCA@
+libgnulib_la_DEPENDENCIES += @ALLOCA@
 EXTRA_DIST += alloca.c
 
-EXTRA_libgnulib_a_SOURCES += alloca.c
+EXTRA_libgnulib_la_SOURCES += alloca.c
 
 ## end   gnulib module alloca
 
@@ -93,7 +93,7 @@ EXTRA_DIST += alloca.in.h
 
 ## begin gnulib module allocator
 
-libgnulib_a_SOURCES += allocator.c
+libgnulib_la_SOURCES += allocator.c
 
 EXTRA_DIST += allocator.h
 
@@ -101,7 +101,7 @@ EXTRA_DIST += allocator.h
 
 ## begin gnulib module areadlink
 
-libgnulib_a_SOURCES += areadlink.c
+libgnulib_la_SOURCES += areadlink.c
 
 EXTRA_DIST += areadlink.h
 
@@ -109,7 +109,7 @@ EXTRA_DIST += areadlink.h
 
 ## begin gnulib module areadlink-with-size
 
-libgnulib_a_SOURCES += areadlink-with-size.c
+libgnulib_la_SOURCES += areadlink-with-size.c
 
 EXTRA_DIST += areadlink.h
 
@@ -117,17 +117,17 @@ EXTRA_DIST += areadlink.h
 
 ## begin gnulib module areadlinkat
 
-libgnulib_a_SOURCES += areadlinkat.c
+libgnulib_la_SOURCES += areadlinkat.c
 
 EXTRA_DIST += areadlink.h at-func.c
 
-EXTRA_libgnulib_a_SOURCES += at-func.c
+EXTRA_libgnulib_la_SOURCES += at-func.c
 
 ## end   gnulib module areadlinkat
 
 ## begin gnulib module argmatch
 
-libgnulib_a_SOURCES += argmatch.c
+libgnulib_la_SOURCES += argmatch.c
 
 EXTRA_DIST += argmatch.h
 
@@ -145,13 +145,13 @@ EXTRA_DIST += assure.h
 
 EXTRA_DIST += openat-priv.h openat-proc.c
 
-EXTRA_libgnulib_a_SOURCES += openat-proc.c
+libgnulib_la_SOURCES += openat-proc.c
 
 ## end   gnulib module at-internal
 
 ## begin gnulib module bitrotate
 
-libgnulib_a_SOURCES += bitrotate.h bitrotate.c
+libgnulib_la_SOURCES += bitrotate.h bitrotate.c
 
 ## end   gnulib module bitrotate
 
@@ -160,7 +160,7 @@ libgnulib_a_SOURCES += bitrotate.h bitrotate.c
 
 EXTRA_DIST += btowc.c
 
-EXTRA_libgnulib_a_SOURCES += btowc.c
+EXTRA_libgnulib_la_SOURCES += btowc.c
 
 ## end   gnulib module btowc
 
@@ -189,13 +189,13 @@ EXTRA_DIST += byteswap.in.h
 
 ## begin gnulib module c-ctype
 
-libgnulib_a_SOURCES += c-ctype.h c-ctype.c
+libgnulib_la_SOURCES += c-ctype.h c-ctype.c
 
 ## end   gnulib module c-ctype
 
 ## begin gnulib module c-strcase
 
-libgnulib_a_SOURCES += c-strcase.h c-strcasecmp.c c-strncasecmp.c
+libgnulib_la_SOURCES += c-strcase.h c-strcasecmp.c c-strncasecmp.c
 
 ## end   gnulib module c-strcase
 
@@ -208,7 +208,7 @@ EXTRA_DIST += c-strcaseeq.h
 
 ## begin gnulib module c-strcasestr
 
-libgnulib_a_SOURCES += c-strcasestr.h c-strcasestr.c
+libgnulib_la_SOURCES += c-strcasestr.h c-strcasestr.c
 
 EXTRA_DIST += str-two-way.h
 
@@ -216,13 +216,13 @@ EXTRA_DIST += str-two-way.h
 
 ## begin gnulib module c-strstr
 
-libgnulib_a_SOURCES += c-strstr.h c-strstr.c
+libgnulib_la_SOURCES += c-strstr.h c-strstr.c
 
 ## end   gnulib module c-strstr
 
 ## begin gnulib module canonicalize
 
-libgnulib_a_SOURCES += canonicalize.c
+libgnulib_la_SOURCES += canonicalize.c
 
 EXTRA_DIST += canonicalize.h
 
@@ -230,7 +230,7 @@ EXTRA_DIST += canonicalize.h
 
 ## begin gnulib module careadlinkat
 
-libgnulib_a_SOURCES += careadlinkat.c
+libgnulib_la_SOURCES += careadlinkat.c
 
 EXTRA_DIST += careadlinkat.h
 
@@ -241,13 +241,13 @@ EXTRA_DIST += careadlinkat.h
 
 EXTRA_DIST += chdir-long.c chdir-long.h
 
-EXTRA_libgnulib_a_SOURCES += chdir-long.c
+libgnulib_la_SOURCES += chdir-long.c
 
 ## end   gnulib module chdir-long
 
 ## begin gnulib module cloexec
 
-libgnulib_a_SOURCES += cloexec.c
+libgnulib_la_SOURCES += cloexec.c
 
 EXTRA_DIST += cloexec.h
 
@@ -258,13 +258,13 @@ EXTRA_DIST += cloexec.h
 
 EXTRA_DIST += close.c
 
-EXTRA_libgnulib_a_SOURCES += close.c
+EXTRA_libgnulib_la_SOURCES += close.c
 
 ## end   gnulib module close
 
 ## begin gnulib module close-stream
 
-libgnulib_a_SOURCES += close-stream.c
+libgnulib_la_SOURCES += close-stream.c
 
 EXTRA_DIST += close-stream.h
 
@@ -275,13 +275,13 @@ EXTRA_DIST += close-stream.h
 
 EXTRA_DIST += closedir.c dirent-private.h
 
-EXTRA_libgnulib_a_SOURCES += closedir.c
+EXTRA_libgnulib_la_SOURCES += closedir.c
 
 ## end   gnulib module closedir
 
 ## begin gnulib module closein
 
-libgnulib_a_SOURCES += closein.c
+libgnulib_la_SOURCES += closein.c
 
 EXTRA_DIST += closein.h
 
@@ -289,7 +289,7 @@ EXTRA_DIST += closein.h
 
 ## begin gnulib module closeout
 
-libgnulib_a_SOURCES += closeout.c
+libgnulib_la_SOURCES += closeout.c
 
 EXTRA_DIST += closeout.h
 
@@ -369,7 +369,7 @@ EXTRA_DIST += ctype.in.h
 
 ## begin gnulib module cycle-check
 
-libgnulib_a_SOURCES += cycle-check.c
+libgnulib_la_SOURCES += cycle-check.c
 
 EXTRA_DIST += cycle-check.h
 
@@ -432,7 +432,7 @@ EXTRA_DIST += dirent.in.h
 
 ## begin gnulib module dirent-safer
 
-libgnulib_a_SOURCES += opendir-safer.c
+libgnulib_la_SOURCES += opendir-safer.c
 
 EXTRA_DIST += dirent--.h dirent-safer.h
 
@@ -443,23 +443,23 @@ EXTRA_DIST += dirent--.h dirent-safer.h
 
 EXTRA_DIST += dirfd.c
 
-EXTRA_libgnulib_a_SOURCES += dirfd.c
+EXTRA_libgnulib_la_SOURCES += dirfd.c
 
 ## end   gnulib module dirfd
 
 ## begin gnulib module dirname
 
-libgnulib_a_SOURCES += dirname.c basename.c
+libgnulib_la_SOURCES += dirname.c basename.c
 
 EXTRA_DIST += stripslash.c
 
-EXTRA_libgnulib_a_SOURCES += stripslash.c
+EXTRA_libgnulib_la_SOURCES += stripslash.c
 
 ## end   gnulib module dirname
 
 ## begin gnulib module dirname-lgpl
 
-libgnulib_a_SOURCES += dirname-lgpl.c basename-lgpl.c stripslash.c
+libgnulib_la_SOURCES += dirname-lgpl.c basename-lgpl.c stripslash.c
 
 EXTRA_DIST += dirname.h
 
@@ -477,7 +477,7 @@ EXTRA_DIST += dosname.h
 
 EXTRA_DIST += dup.c
 
-EXTRA_libgnulib_a_SOURCES += dup.c
+EXTRA_libgnulib_la_SOURCES += dup.c
 
 ## end   gnulib module dup
 
@@ -486,7 +486,7 @@ EXTRA_libgnulib_a_SOURCES += dup.c
 
 EXTRA_DIST += dup2.c
 
-EXTRA_libgnulib_a_SOURCES += dup2.c
+EXTRA_libgnulib_la_SOURCES += dup2.c
 
 ## end   gnulib module dup2
 
@@ -529,7 +529,7 @@ EXTRA_DIST += errno.in.h
 
 EXTRA_DIST += error.c error.h
 
-EXTRA_libgnulib_a_SOURCES += error.c
+libgnulib_la_SOURCES += error.c
 
 ## end   gnulib module error
 
@@ -538,13 +538,13 @@ EXTRA_libgnulib_a_SOURCES += error.c
 
 EXTRA_DIST += euidaccess.c
 
-EXTRA_libgnulib_a_SOURCES += euidaccess.c
+EXTRA_libgnulib_la_SOURCES += euidaccess.c
 
 ## end   gnulib module euidaccess
 
 ## begin gnulib module exitfail
 
-libgnulib_a_SOURCES += exitfail.c
+libgnulib_la_SOURCES += exitfail.c
 
 EXTRA_DIST += exitfail.h
 
@@ -555,7 +555,7 @@ EXTRA_DIST += exitfail.h
 
 EXTRA_DIST += at-func.c faccessat.c
 
-EXTRA_libgnulib_a_SOURCES += at-func.c faccessat.c
+EXTRA_libgnulib_la_SOURCES += at-func.c faccessat.c
 
 ## end   gnulib module faccessat
 
@@ -564,7 +564,7 @@ EXTRA_libgnulib_a_SOURCES += at-func.c faccessat.c
 
 EXTRA_DIST += fchdir.c
 
-EXTRA_libgnulib_a_SOURCES += fchdir.c
+EXTRA_libgnulib_la_SOURCES += fchdir.c
 
 ## end   gnulib module fchdir
 
@@ -573,7 +573,7 @@ EXTRA_libgnulib_a_SOURCES += fchdir.c
 
 EXTRA_DIST += fcntl.c
 
-EXTRA_libgnulib_a_SOURCES += fcntl.c
+EXTRA_libgnulib_la_SOURCES += fcntl.c
 
 ## end   gnulib module fcntl
 
@@ -614,7 +614,7 @@ EXTRA_DIST += fcntl.in.h
 
 ## begin gnulib module fcntl-safer
 
-libgnulib_a_SOURCES += creat-safer.c open-safer.c
+libgnulib_la_SOURCES += creat-safer.c open-safer.c
 
 EXTRA_DIST += fcntl--.h fcntl-safer.h
 
@@ -622,7 +622,7 @@ EXTRA_DIST += fcntl--.h fcntl-safer.h
 
 ## begin gnulib module fd-hook
 
-libgnulib_a_SOURCES += fd-hook.c
+libgnulib_la_SOURCES += fd-hook.c
 
 EXTRA_DIST += fd-hook.h
 
@@ -633,7 +633,7 @@ EXTRA_DIST += fd-hook.h
 
 EXTRA_DIST += fdopendir.c
 
-EXTRA_libgnulib_a_SOURCES += fdopendir.c
+libgnulib_la_SOURCES += fdopendir.c
 
 ## end   gnulib module fdopendir
 
@@ -642,13 +642,13 @@ EXTRA_libgnulib_a_SOURCES += fdopendir.c
 
 EXTRA_DIST += fflush.c stdio-impl.h
 
-EXTRA_libgnulib_a_SOURCES += fflush.c
+libgnulib_la_SOURCES += fflush.c
 
 ## end   gnulib module fflush
 
 ## begin gnulib module file-set
 
-libgnulib_a_SOURCES += file-set.c
+libgnulib_la_SOURCES += file-set.c
 
 EXTRA_DIST += file-set.h
 
@@ -659,13 +659,13 @@ EXTRA_DIST += file-set.h
 
 EXTRA_DIST += fileblocks.c
 
-EXTRA_libgnulib_a_SOURCES += fileblocks.c
+EXTRA_libgnulib_la_SOURCES += fileblocks.c
 
 ## end   gnulib module fileblocks
 
 ## begin gnulib module filemode
 
-libgnulib_a_SOURCES += filemode.c
+libgnulib_la_SOURCES += filemode.c
 
 EXTRA_DIST += filemode.h
 
@@ -680,7 +680,7 @@ EXTRA_DIST += filename.h
 
 ## begin gnulib module filenamecat-lgpl
 
-libgnulib_a_SOURCES += filenamecat-lgpl.c
+libgnulib_la_SOURCES += filenamecat-lgpl.c
 
 EXTRA_DIST += filenamecat.h
 
@@ -713,7 +713,7 @@ MOSTLYCLEANFILES += float.h float.h-t
 
 EXTRA_DIST += float.c float.in.h itold.c
 
-EXTRA_libgnulib_a_SOURCES += float.c itold.c
+EXTRA_libgnulib_la_SOURCES += float.c itold.c
 
 ## end   gnulib module float
 
@@ -739,7 +739,9 @@ MOSTLYCLEANFILES += fnmatch.h fnmatch.h-t
 
 EXTRA_DIST += fnmatch.c fnmatch.in.h fnmatch_loop.c
 
-EXTRA_libgnulib_a_SOURCES += fnmatch.c fnmatch_loop.c
+EXTRA_libgnulib_la_SOURCES += fnmatch.c fnmatch_loop.c
+
+libgnulib_la_SOURCES += fnmatch.c
 
 ## end   gnulib module fnmatch
 
@@ -748,13 +750,13 @@ EXTRA_libgnulib_a_SOURCES += fnmatch.c fnmatch_loop.c
 
 EXTRA_DIST += fopen.c
 
-EXTRA_libgnulib_a_SOURCES += fopen.c
+EXTRA_libgnulib_la_SOURCES += fopen.c
 
 ## end   gnulib module fopen
 
 ## begin gnulib module fopen-safer
 
-libgnulib_a_SOURCES += fopen-safer.c
+libgnulib_la_SOURCES += fopen-safer.c
 
 EXTRA_DIST += stdio--.h stdio-safer.h
 
@@ -765,7 +767,7 @@ EXTRA_DIST += stdio--.h stdio-safer.h
 
 EXTRA_DIST += fpending.c fpending.h
 
-EXTRA_libgnulib_a_SOURCES += fpending.c
+libgnulib_la_SOURCES += fpending.c
 
 ## end   gnulib module fpending
 
@@ -774,7 +776,7 @@ EXTRA_libgnulib_a_SOURCES += fpending.c
 
 EXTRA_DIST += fpurge.c stdio-impl.h
 
-EXTRA_libgnulib_a_SOURCES += fpurge.c
+libgnulib_la_SOURCES += fpurge.c
 
 ## end   gnulib module fpurge
 
@@ -783,13 +785,13 @@ EXTRA_libgnulib_a_SOURCES += fpurge.c
 
 EXTRA_DIST += freadahead.c freadahead.h stdio-impl.h
 
-EXTRA_libgnulib_a_SOURCES += freadahead.c
+libgnulib_la_SOURCES += freadahead.c
 
 ## end   gnulib module freadahead
 
 ## begin gnulib module freading
 
-libgnulib_a_SOURCES += freading.c
+libgnulib_la_SOURCES += freading.c
 
 EXTRA_DIST += freading.h stdio-impl.h
 
@@ -800,7 +802,7 @@ EXTRA_DIST += freading.h stdio-impl.h
 
 EXTRA_DIST += fseek.c
 
-EXTRA_libgnulib_a_SOURCES += fseek.c
+EXTRA_libgnulib_la_SOURCES += fseek.c
 
 ## end   gnulib module fseek
 
@@ -809,7 +811,7 @@ EXTRA_libgnulib_a_SOURCES += fseek.c
 
 EXTRA_DIST += fseeko.c stdio-impl.h
 
-EXTRA_libgnulib_a_SOURCES += fseeko.c
+libgnulib_la_SOURCES += fseeko.c
 
 ## end   gnulib module fseeko
 
@@ -818,7 +820,7 @@ EXTRA_libgnulib_a_SOURCES += fseeko.c
 
 EXTRA_DIST += fstat.c
 
-EXTRA_libgnulib_a_SOURCES += fstat.c
+EXTRA_libgnulib_la_SOURCES += fstat.c
 
 ## end   gnulib module fstat
 
@@ -827,7 +829,9 @@ EXTRA_libgnulib_a_SOURCES += fstat.c
 
 EXTRA_DIST += at-func.c fstatat.c
 
-EXTRA_libgnulib_a_SOURCES += at-func.c fstatat.c
+EXTRA_libgnulib_la_SOURCES += at-func.c fstatat.c
+
+libgnulib_la_SOURCES += fstatat.c
 
 ## end   gnulib module fstatat
 
@@ -836,7 +840,7 @@ EXTRA_libgnulib_a_SOURCES += at-func.c fstatat.c
 
 EXTRA_DIST += ftell.c
 
-EXTRA_libgnulib_a_SOURCES += ftell.c
+EXTRA_libgnulib_la_SOURCES += ftell.c
 
 ## end   gnulib module ftell
 
@@ -845,7 +849,7 @@ EXTRA_libgnulib_a_SOURCES += ftell.c
 
 EXTRA_DIST += ftello.c stdio-impl.h
 
-EXTRA_libgnulib_a_SOURCES += ftello.c
+EXTRA_libgnulib_la_SOURCES += ftello.c
 
 ## end   gnulib module ftello
 
@@ -854,7 +858,7 @@ EXTRA_libgnulib_a_SOURCES += ftello.c
 
 EXTRA_DIST += fts-cycle.c fts.c fts_.h
 
-EXTRA_libgnulib_a_SOURCES += fts-cycle.c fts.c
+EXTRA_libgnulib_la_SOURCES += fts-cycle.c fts.c
 
 ## end   gnulib module fts
 
@@ -863,7 +867,7 @@ EXTRA_libgnulib_a_SOURCES += fts-cycle.c fts.c
 
 EXTRA_DIST += getcwd.c
 
-EXTRA_libgnulib_a_SOURCES += getcwd.c
+libgnulib_la_SOURCES += getcwd.c
 
 ## end   gnulib module getcwd
 
@@ -872,7 +876,7 @@ EXTRA_libgnulib_a_SOURCES += getcwd.c
 
 EXTRA_DIST += getcwd-lgpl.c
 
-EXTRA_libgnulib_a_SOURCES += getcwd-lgpl.c
+EXTRA_libgnulib_la_SOURCES += getcwd-lgpl.c
 
 ## end   gnulib module getcwd-lgpl
 
@@ -881,7 +885,7 @@ EXTRA_libgnulib_a_SOURCES += getcwd-lgpl.c
 
 EXTRA_DIST += getdelim.c
 
-EXTRA_libgnulib_a_SOURCES += getdelim.c
+libgnulib_la_SOURCES += getdelim.c
 
 ## end   gnulib module getdelim
 
@@ -890,7 +894,7 @@ EXTRA_libgnulib_a_SOURCES += getdelim.c
 
 EXTRA_DIST += getdtablesize.c
 
-EXTRA_libgnulib_a_SOURCES += getdtablesize.c
+EXTRA_libgnulib_la_SOURCES += getdtablesize.c
 
 ## end   gnulib module getdtablesize
 
@@ -899,7 +903,7 @@ EXTRA_libgnulib_a_SOURCES += getdtablesize.c
 
 EXTRA_DIST += getgroups.c
 
-EXTRA_libgnulib_a_SOURCES += getgroups.c
+EXTRA_libgnulib_la_SOURCES += getgroups.c
 
 ## end   gnulib module getgroups
 
@@ -908,7 +912,7 @@ EXTRA_libgnulib_a_SOURCES += getgroups.c
 
 EXTRA_DIST += gethostname.c w32sock.h
 
-EXTRA_libgnulib_a_SOURCES += gethostname.c
+EXTRA_libgnulib_la_SOURCES += gethostname.c
 
 ## end   gnulib module gethostname
 
@@ -917,7 +921,7 @@ EXTRA_libgnulib_a_SOURCES += gethostname.c
 
 EXTRA_DIST += getline.c
 
-EXTRA_libgnulib_a_SOURCES += getline.c
+libgnulib_la_SOURCES += getline.c
 
 ## end   gnulib module getline
 
@@ -944,7 +948,7 @@ MOSTLYCLEANFILES += getopt.h getopt.h-t
 
 EXTRA_DIST += getopt.c getopt.in.h getopt1.c getopt_int.h
 
-EXTRA_libgnulib_a_SOURCES += getopt.c getopt1.c
+libgnulib_la_SOURCES += getopt.c getopt1.c
 
 ## end   gnulib module getopt-posix
 
@@ -967,13 +971,13 @@ EXTRA_DIST += $(top_srcdir)/build-aux/config.rpath
 
 ## begin gnulib module gettext-h
 
-libgnulib_a_SOURCES += gettext.h
+libgnulib_la_SOURCES += gettext.h
 
 ## end   gnulib module gettext-h
 
 ## begin gnulib module gettime
 
-libgnulib_a_SOURCES += gettime.c
+libgnulib_la_SOURCES += gettime.c
 
 ## end   gnulib module gettime
 
@@ -982,7 +986,7 @@ libgnulib_a_SOURCES += gettime.c
 
 EXTRA_DIST += gettimeofday.c
 
-EXTRA_libgnulib_a_SOURCES += gettimeofday.c
+libgnulib_la_SOURCES += gettimeofday.c
 
 ## end   gnulib module gettimeofday
 
@@ -1008,13 +1012,13 @@ EXTRA_DIST += $(top_srcdir)/GNUmakefile
 
 EXTRA_DIST += group-member.c
 
-EXTRA_libgnulib_a_SOURCES += group-member.c
+EXTRA_libgnulib_la_SOURCES += group-member.c
 
 ## end   gnulib module group-member
 
 ## begin gnulib module hash
 
-libgnulib_a_SOURCES += hash.c
+libgnulib_la_SOURCES += hash.c
 
 EXTRA_DIST += hash.h
 
@@ -1022,13 +1026,13 @@ EXTRA_DIST += hash.h
 
 ## begin gnulib module hash-pjw
 
-libgnulib_a_SOURCES += hash-pjw.h hash-pjw.c
+libgnulib_la_SOURCES += hash-pjw.h hash-pjw.c
 
 ## end   gnulib module hash-pjw
 
 ## begin gnulib module hash-triple
 
-libgnulib_a_SOURCES += hash-triple.c
+libgnulib_la_SOURCES += hash-triple.c
 
 EXTRA_DIST += hash-triple.h
 
@@ -1043,7 +1047,7 @@ EXTRA_DIST += $(top_srcdir)/build-aux/config.rpath
 
 ## begin gnulib module human
 
-libgnulib_a_SOURCES += human.c
+libgnulib_la_SOURCES += human.c
 
 EXTRA_DIST += human.h
 
@@ -1051,7 +1055,7 @@ EXTRA_DIST += human.h
 
 ## begin gnulib module i-ring
 
-libgnulib_a_SOURCES += i-ring.c
+libgnulib_la_SOURCES += i-ring.c
 
 EXTRA_DIST += i-ring.h
 
@@ -1059,7 +1063,7 @@ EXTRA_DIST += i-ring.h
 
 ## begin gnulib module idcache
 
-libgnulib_a_SOURCES += idcache.c
+libgnulib_la_SOURCES += idcache.c
 
 EXTRA_DIST += idcache.h
 
@@ -1122,7 +1126,7 @@ EXTRA_DIST += inttypes.in.h
 
 EXTRA_DIST += isblank.c
 
-EXTRA_libgnulib_a_SOURCES += isblank.c
+EXTRA_libgnulib_la_SOURCES += isblank.c
 
 ## end   gnulib module isblank
 
@@ -1131,7 +1135,7 @@ EXTRA_libgnulib_a_SOURCES += isblank.c
 
 EXTRA_DIST += isfinite.c
 
-EXTRA_libgnulib_a_SOURCES += isfinite.c
+EXTRA_libgnulib_la_SOURCES += isfinite.c
 
 ## end   gnulib module isfinite
 
@@ -1140,7 +1144,7 @@ EXTRA_libgnulib_a_SOURCES += isfinite.c
 
 EXTRA_DIST += isinf.c
 
-EXTRA_libgnulib_a_SOURCES += isinf.c
+EXTRA_libgnulib_la_SOURCES += isinf.c
 
 ## end   gnulib module isinf
 
@@ -1149,7 +1153,7 @@ EXTRA_libgnulib_a_SOURCES += isinf.c
 
 EXTRA_DIST += float+.h isnan.c isnand-nolibm.h isnand.c
 
-EXTRA_libgnulib_a_SOURCES += isnan.c isnand.c
+EXTRA_libgnulib_la_SOURCES += isnan.c isnand.c
 
 ## end   gnulib module isnand-nolibm
 
@@ -1158,7 +1162,7 @@ EXTRA_libgnulib_a_SOURCES += isnan.c isnand.c
 
 EXTRA_DIST += float+.h isnan.c isnanf-nolibm.h isnanf.c
 
-EXTRA_libgnulib_a_SOURCES += isnan.c isnanf.c
+EXTRA_libgnulib_la_SOURCES += isnan.c isnanf.c
 
 ## end   gnulib module isnanf-nolibm
 
@@ -1167,7 +1171,7 @@ EXTRA_libgnulib_a_SOURCES += isnan.c isnanf.c
 
 EXTRA_DIST += float+.h isnan.c isnanl-nolibm.h isnanl.c
 
-EXTRA_libgnulib_a_SOURCES += isnan.c isnanl.c
+EXTRA_libgnulib_la_SOURCES += isnan.c isnanl.c
 
 ## end   gnulib module isnanl-nolibm
 
@@ -1176,7 +1180,7 @@ EXTRA_libgnulib_a_SOURCES += isnan.c isnanl.c
 
 EXTRA_DIST += iswblank.c
 
-EXTRA_libgnulib_a_SOURCES += iswblank.c
+EXTRA_libgnulib_la_SOURCES += iswblank.c
 
 ## end   gnulib module iswblank
 
@@ -1215,7 +1219,7 @@ EXTRA_DIST += langinfo.in.h
 
 ## begin gnulib module localcharset
 
-libgnulib_a_SOURCES += localcharset.h localcharset.c
+libgnulib_la_SOURCES += localcharset.h localcharset.c
 
 # We need the following in order to install a simple file in $(libdir)
 # which is shared with other installed packages. We use a list of referencing
@@ -1327,13 +1331,13 @@ EXTRA_DIST += locale.in.h
 
 EXTRA_DIST += localeconv.c
 
-EXTRA_libgnulib_a_SOURCES += localeconv.c
+EXTRA_libgnulib_la_SOURCES += localeconv.c
 
 ## end   gnulib module localeconv
 
 ## begin gnulib module lock
 
-libgnulib_a_SOURCES += glthread/lock.h glthread/lock.c
+libgnulib_la_SOURCES += glthread/lock.h glthread/lock.c
 
 ## end   gnulib module lock
 
@@ -1342,7 +1346,7 @@ libgnulib_a_SOURCES += glthread/lock.h glthread/lock.c
 
 EXTRA_DIST += lseek.c
 
-EXTRA_libgnulib_a_SOURCES += lseek.c
+EXTRA_libgnulib_la_SOURCES += lseek.c
 
 ## end   gnulib module lseek
 
@@ -1351,7 +1355,7 @@ EXTRA_libgnulib_a_SOURCES += lseek.c
 
 EXTRA_DIST += lstat.c
 
-EXTRA_libgnulib_a_SOURCES += lstat.c
+libgnulib_la_SOURCES += lstat.c
 
 ## end   gnulib module lstat
 
@@ -1366,22 +1370,22 @@ EXTRA_DIST += $(top_srcdir)/maint.mk
 
 EXTRA_DIST += malloc.c
 
-EXTRA_libgnulib_a_SOURCES += malloc.c
+libgnulib_la_SOURCES += malloc.c
 
 ## end   gnulib module malloc-gnu
 
 ## begin gnulib module malloc-posix
 
 
-EXTRA_DIST += malloc.c
+#EXTRA_DIST += malloc.c
 
-EXTRA_libgnulib_a_SOURCES += malloc.c
+#EXTRA_libgnulib_la_SOURCES += malloc.c
 
 ## end   gnulib module malloc-posix
 
 ## begin gnulib module malloca
 
-libgnulib_a_SOURCES += malloca.c
+libgnulib_la_SOURCES += malloca.c
 
 EXTRA_DIST += malloca.h malloca.valgrind
 
@@ -1390,7 +1394,7 @@ EXTRA_DIST += malloca.h malloca.valgrind
 ## begin gnulib module math
 
 BUILT_SOURCES += math.h
-libgnulib_a_SOURCES += math.c
+libgnulib_la_SOURCES += math.c
 
 # We need the following in order to create <math.h> when the system
 # doesn't have one that works with the given compiler.
@@ -1673,7 +1677,7 @@ EXTRA_DIST += math.in.h
 
 ## begin gnulib module mbchar
 
-libgnulib_a_SOURCES += mbchar.c
+libgnulib_la_SOURCES += mbchar.c
 
 EXTRA_DIST += mbchar.h
 
@@ -1684,13 +1688,13 @@ EXTRA_DIST += mbchar.h
 
 EXTRA_DIST += mbrtowc.c
 
-EXTRA_libgnulib_a_SOURCES += mbrtowc.c
+EXTRA_libgnulib_la_SOURCES += mbrtowc.c
 
 ## end   gnulib module mbrtowc
 
 ## begin gnulib module mbscasestr
 
-libgnulib_a_SOURCES += mbscasestr.c
+libgnulib_la_SOURCES += mbscasestr.c
 
 EXTRA_DIST += str-kmp.h
 
@@ -1701,13 +1705,13 @@ EXTRA_DIST += str-kmp.h
 
 EXTRA_DIST += mbsinit.c
 
-EXTRA_libgnulib_a_SOURCES += mbsinit.c
+EXTRA_libgnulib_la_SOURCES += mbsinit.c
 
 ## end   gnulib module mbsinit
 
 ## begin gnulib module mbslen
 
-libgnulib_a_SOURCES += mbslen.c
+libgnulib_la_SOURCES += mbslen.c
 
 ## end   gnulib module mbslen
 
@@ -1716,13 +1720,13 @@ libgnulib_a_SOURCES += mbslen.c
 
 EXTRA_DIST += mbsrtowcs-impl.h mbsrtowcs-state.c mbsrtowcs.c
 
-EXTRA_libgnulib_a_SOURCES += mbsrtowcs-state.c mbsrtowcs.c
+EXTRA_libgnulib_la_SOURCES += mbsrtowcs-state.c mbsrtowcs.c
 
 ## end   gnulib module mbsrtowcs
 
 ## begin gnulib module mbsstr
 
-libgnulib_a_SOURCES += mbsstr.c
+libgnulib_la_SOURCES += mbsstr.c
 
 EXTRA_DIST += str-kmp.h
 
@@ -1730,7 +1734,7 @@ EXTRA_DIST += str-kmp.h
 
 ## begin gnulib module mbswidth
 
-libgnulib_a_SOURCES += mbswidth.h mbswidth.c
+libgnulib_la_SOURCES += mbswidth.h mbswidth.c
 
 ## end   gnulib module mbswidth
 
@@ -1739,13 +1743,13 @@ libgnulib_a_SOURCES += mbswidth.h mbswidth.c
 
 EXTRA_DIST += mbtowc-impl.h mbtowc.c
 
-EXTRA_libgnulib_a_SOURCES += mbtowc.c
+EXTRA_libgnulib_la_SOURCES += mbtowc.c
 
 ## end   gnulib module mbtowc
 
 ## begin gnulib module mbuiter
 
-libgnulib_a_SOURCES += mbuiter.h mbuiter.c
+libgnulib_la_SOURCES += mbuiter.h mbuiter.c
 
 ## end   gnulib module mbuiter
 
@@ -1754,7 +1758,7 @@ libgnulib_a_SOURCES += mbuiter.h mbuiter.c
 
 EXTRA_DIST += memchr.c memchr.valgrind
 
-EXTRA_libgnulib_a_SOURCES += memchr.c
+libgnulib_la_SOURCES += memchr.c
 
 ## end   gnulib module memchr
 
@@ -1763,7 +1767,7 @@ EXTRA_libgnulib_a_SOURCES += memchr.c
 
 EXTRA_DIST += mempcpy.c
 
-EXTRA_libgnulib_a_SOURCES += mempcpy.c
+EXTRA_libgnulib_la_SOURCES += mempcpy.c
 
 ## end   gnulib module mempcpy
 
@@ -1772,7 +1776,7 @@ EXTRA_libgnulib_a_SOURCES += mempcpy.c
 
 EXTRA_DIST += memrchr.c
 
-EXTRA_libgnulib_a_SOURCES += memrchr.c
+libgnulib_la_SOURCES += memrchr.c
 
 ## end   gnulib module memrchr
 
@@ -1781,7 +1785,7 @@ EXTRA_libgnulib_a_SOURCES += memrchr.c
 
 EXTRA_DIST += mktime-internal.h mktime.c
 
-EXTRA_libgnulib_a_SOURCES += mktime.c
+libgnulib_la_SOURCES += mktime.c
 
 ## end   gnulib module mktime
 
@@ -1790,13 +1794,13 @@ EXTRA_libgnulib_a_SOURCES += mktime.c
 
 EXTRA_DIST += mktime-internal.h mktime.c
 
-EXTRA_libgnulib_a_SOURCES += mktime.c
+EXTRA_libgnulib_la_SOURCES += mktime.c
 
 ## end   gnulib module mktime-internal
 
 ## begin gnulib module modechange
 
-libgnulib_a_SOURCES += modechange.c
+libgnulib_la_SOURCES += modechange.c
 
 EXTRA_DIST += modechange.h
 
@@ -1807,7 +1811,7 @@ EXTRA_DIST += modechange.h
 
 EXTRA_DIST += modf.c
 
-EXTRA_libgnulib_a_SOURCES += modf.c
+EXTRA_libgnulib_la_SOURCES += modf.c
 
 ## end   gnulib module modf
 
@@ -1816,7 +1820,7 @@ EXTRA_libgnulib_a_SOURCES += modf.c
 
 EXTRA_DIST += mountlist.c mountlist.h
 
-EXTRA_libgnulib_a_SOURCES += mountlist.c
+libgnulib_la_SOURCES += mountlist.c
 
 ## end   gnulib module mountlist
 
@@ -1825,7 +1829,7 @@ EXTRA_libgnulib_a_SOURCES += mountlist.c
 
 EXTRA_DIST += msvc-inval.c msvc-inval.h
 
-EXTRA_libgnulib_a_SOURCES += msvc-inval.c
+EXTRA_libgnulib_la_SOURCES += msvc-inval.c
 
 ## end   gnulib module msvc-inval
 
@@ -1834,7 +1838,7 @@ EXTRA_libgnulib_a_SOURCES += msvc-inval.c
 
 EXTRA_DIST += msvc-nothrow.c msvc-nothrow.h
 
-EXTRA_libgnulib_a_SOURCES += msvc-nothrow.c
+EXTRA_libgnulib_la_SOURCES += msvc-nothrow.c
 
 ## end   gnulib module msvc-nothrow
 
@@ -1843,7 +1847,7 @@ EXTRA_libgnulib_a_SOURCES += msvc-nothrow.c
 
 EXTRA_DIST += nl_langinfo.c
 
-EXTRA_libgnulib_a_SOURCES += nl_langinfo.c
+EXTRA_libgnulib_la_SOURCES += nl_langinfo.c
 
 ## end   gnulib module nl_langinfo
 
@@ -1852,7 +1856,7 @@ EXTRA_libgnulib_a_SOURCES += nl_langinfo.c
 
 EXTRA_DIST += open.c
 
-EXTRA_libgnulib_a_SOURCES += open.c
+libgnulib_la_SOURCES += open.c
 
 ## end   gnulib module open
 
@@ -1861,13 +1865,13 @@ EXTRA_libgnulib_a_SOURCES += open.c
 
 EXTRA_DIST += openat.c
 
-EXTRA_libgnulib_a_SOURCES += openat.c
+libgnulib_la_SOURCES += openat.c
 
 ## end   gnulib module openat
 
 ## begin gnulib module openat-die
 
-libgnulib_a_SOURCES += openat-die.c
+libgnulib_la_SOURCES += openat-die.c
 
 ## end   gnulib module openat-die
 
@@ -1880,7 +1884,7 @@ EXTRA_DIST += openat.h
 
 ## begin gnulib module openat-safer
 
-libgnulib_a_SOURCES += openat-safer.c
+libgnulib_la_SOURCES += openat-safer.c
 
 EXTRA_DIST += fcntl--.h fcntl-safer.h
 
@@ -1891,7 +1895,7 @@ EXTRA_DIST += fcntl--.h fcntl-safer.h
 
 EXTRA_DIST += dirent-private.h opendir.c
 
-EXTRA_libgnulib_a_SOURCES += opendir.c
+EXTRA_libgnulib_la_SOURCES += opendir.c
 
 ## end   gnulib module opendir
 
@@ -1908,7 +1912,7 @@ parse-datetime.c: parse-datetime.y
 	                              -- $(YACC) $(YFLAGS) $(AM_YFLAGS) && \
 	mv parse-datetime.c parse-datetime.c-t && \
 	mv parse-datetime.c-t $(srcdir)/parse-datetime.c
-libgnulib_a_SOURCES += parse-datetime.y
+libgnulib_la_SOURCES += parse-datetime.y
 BUILT_SOURCES += parse-datetime.c
 MOSTLYCLEANFILES += parse-datetime.c-t
 MAINTAINERCLEANFILES += parse-datetime.c
@@ -1930,13 +1934,13 @@ EXTRA_DIST += pathmax.h
 
 EXTRA_DIST += perror.c
 
-EXTRA_libgnulib_a_SOURCES += perror.c
+libgnulib_la_SOURCES += perror.c
 
 ## end   gnulib module perror
 
 ## begin gnulib module progname
 
-libgnulib_a_SOURCES += progname.h progname.c
+libgnulib_la_SOURCES += progname.h progname.c
 
 ## end   gnulib module progname
 
@@ -1949,7 +1953,7 @@ EXTRA_DIST += quote.h
 
 ## begin gnulib module quotearg
 
-libgnulib_a_SOURCES += quotearg.c
+libgnulib_la_SOURCES += quotearg.c
 
 EXTRA_DIST += quote.h quotearg.h
 
@@ -1960,7 +1964,7 @@ EXTRA_DIST += quote.h quotearg.h
 
 EXTRA_DIST += read.c
 
-EXTRA_libgnulib_a_SOURCES += read.c
+EXTRA_libgnulib_la_SOURCES += read.c
 
 ## end   gnulib module read
 
@@ -1969,7 +1973,7 @@ EXTRA_libgnulib_a_SOURCES += read.c
 
 EXTRA_DIST += dirent-private.h readdir.c
 
-EXTRA_libgnulib_a_SOURCES += readdir.c
+EXTRA_libgnulib_la_SOURCES += readdir.c
 
 ## end   gnulib module readdir
 
@@ -1978,7 +1982,7 @@ EXTRA_libgnulib_a_SOURCES += readdir.c
 
 EXTRA_DIST += readlink.c
 
-EXTRA_libgnulib_a_SOURCES += readlink.c
+libgnulib_la_SOURCES += readlink.c
 
 ## end   gnulib module readlink
 
@@ -1987,7 +1991,9 @@ EXTRA_libgnulib_a_SOURCES += readlink.c
 
 EXTRA_DIST += at-func.c readlinkat.c
 
-EXTRA_libgnulib_a_SOURCES += at-func.c readlinkat.c
+EXTRA_libgnulib_la_SOURCES += at-func.c readlinkat.c
+
+libgnulib_la_SOURCES += readlinkat.c
 
 ## end   gnulib module readlinkat
 
@@ -1996,16 +2002,16 @@ EXTRA_libgnulib_a_SOURCES += at-func.c readlinkat.c
 
 EXTRA_DIST += realloc.c
 
-EXTRA_libgnulib_a_SOURCES += realloc.c
+libgnulib_la_SOURCES += realloc.c
 
 ## end   gnulib module realloc-gnu
 
 ## begin gnulib module realloc-posix
 
 
-EXTRA_DIST += realloc.c
+#EXTRA_DIST += realloc.c
 
-EXTRA_libgnulib_a_SOURCES += realloc.c
+#libgnulib_la_SOURCES += realloc.c
 
 ## end   gnulib module realloc-posix
 
@@ -2014,7 +2020,9 @@ EXTRA_libgnulib_a_SOURCES += realloc.c
 
 EXTRA_DIST += regcomp.c regex.c regex.h regex_internal.c regex_internal.h regexec.c
 
-EXTRA_libgnulib_a_SOURCES += regcomp.c regex.c regex_internal.c regexec.c
+EXTRA_libgnulib_la_SOURCES += regcomp.c regex.c regex_internal.c regexec.c
+
+libgnulib_la_SOURCES += regex.c
 
 ## end   gnulib module regex
 
@@ -2023,7 +2031,7 @@ EXTRA_libgnulib_a_SOURCES += regcomp.c regex.c regex_internal.c regexec.c
 
 EXTRA_DIST += dirent-private.h rewinddir.c
 
-EXTRA_libgnulib_a_SOURCES += rewinddir.c
+EXTRA_libgnulib_la_SOURCES += rewinddir.c
 
 ## end   gnulib module rewinddir
 
@@ -2032,7 +2040,7 @@ EXTRA_libgnulib_a_SOURCES += rewinddir.c
 
 EXTRA_DIST += rmdir.c
 
-EXTRA_libgnulib_a_SOURCES += rmdir.c
+EXTRA_libgnulib_la_SOURCES += rmdir.c
 
 ## end   gnulib module rmdir
 
@@ -2048,13 +2056,13 @@ EXTRA_DIST += root-uid.h
 
 EXTRA_DIST += rpmatch.c
 
-EXTRA_libgnulib_a_SOURCES += rpmatch.c
+EXTRA_libgnulib_la_SOURCES += rpmatch.c
 
 ## end   gnulib module rpmatch
 
 ## begin gnulib module safe-read
 
-libgnulib_a_SOURCES += safe-read.c
+libgnulib_la_SOURCES += safe-read.c
 
 EXTRA_DIST += safe-read.h
 
@@ -2062,7 +2070,7 @@ EXTRA_DIST += safe-read.h
 
 ## begin gnulib module same
 
-libgnulib_a_SOURCES += same.c
+libgnulib_la_SOURCES += same.c
 
 EXTRA_DIST += same.h
 
@@ -2077,7 +2085,7 @@ EXTRA_DIST += same-inode.h
 
 ## begin gnulib module save-cwd
 
-libgnulib_a_SOURCES += save-cwd.c
+libgnulib_la_SOURCES += save-cwd.c
 
 EXTRA_DIST += save-cwd.h
 
@@ -2085,7 +2093,7 @@ EXTRA_DIST += save-cwd.h
 
 ## begin gnulib module savedir
 
-libgnulib_a_SOURCES += savedir.c
+libgnulib_la_SOURCES += savedir.c
 
 EXTRA_DIST += savedir.h
 
@@ -2096,13 +2104,15 @@ EXTRA_DIST += savedir.h
 
 EXTRA_DIST += at-func.c selinux-at.c selinux-at.h
 
-EXTRA_libgnulib_a_SOURCES += at-func.c selinux-at.c
+EXTRA_libgnulib_la_SOURCES += at-func.c selinux-at.c
+
+libgnulib_la_SOURCES += selinux-at.c
 
 ## end   gnulib module selinux-at
 
 ## begin gnulib module selinux-h
 
-libgnulib_a_SOURCES += se-context.in.h se-selinux.in.h se-context.c se-selinux.c
+libgnulib_la_SOURCES += se-context.in.h se-selinux.in.h se-context.c se-selinux.c
 
 BUILT_SOURCES += selinux/selinux.h
 selinux/selinux.h: se-selinux.in.h $(top_builddir)/config.status $(UNUSED_PARAMETER_H)
@@ -2141,7 +2151,7 @@ MOSTLYCLEANDIRS += selinux
 
 EXTRA_DIST += getfilecon.c
 
-EXTRA_libgnulib_a_SOURCES += getfilecon.c
+libgnulib_la_SOURCES += getfilecon.c
 
 ## end   gnulib module selinux-h
 
@@ -2150,13 +2160,13 @@ EXTRA_libgnulib_a_SOURCES += getfilecon.c
 
 EXTRA_DIST += setenv.c
 
-EXTRA_libgnulib_a_SOURCES += setenv.c
+libgnulib_la_SOURCES += setenv.c
 
 ## end   gnulib module setenv
 
 ## begin gnulib module size_max
 
-libgnulib_a_SOURCES += size_max.h
+libgnulib_la_SOURCES += size_max.h
 
 ## end   gnulib module size_max
 
@@ -2271,13 +2281,13 @@ EXTRA_DIST += $(top_srcdir)/build-aux/snippet/warn-on-use.h
 
 EXTRA_DIST += snprintf.c
 
-EXTRA_libgnulib_a_SOURCES += snprintf.c
+EXTRA_libgnulib_la_SOURCES += snprintf.c
 
 ## end   gnulib module snprintf
 
 ## begin gnulib module sockets
 
-libgnulib_a_SOURCES += sockets.h sockets.c
+libgnulib_la_SOURCES += sockets.h sockets.c
 
 EXTRA_DIST += w32sock.h
 
@@ -2288,7 +2298,7 @@ EXTRA_DIST += w32sock.h
 
 EXTRA_DIST += stat.c
 
-EXTRA_libgnulib_a_SOURCES += stat.c
+libgnulib_la_SOURCES += stat.c
 
 ## end   gnulib module stat
 
@@ -2308,7 +2318,7 @@ EXTRA_DIST += stat-size.h
 
 ## begin gnulib module stat-time
 
-libgnulib_a_SOURCES += stat-time.c
+libgnulib_la_SOURCES += stat-time.c
 
 EXTRA_DIST += stat-time.h
 
@@ -2316,7 +2326,7 @@ EXTRA_DIST += stat-time.h
 
 ## begin gnulib module statat
 
-libgnulib_a_SOURCES += statat.c
+libgnulib_la_SOURCES += statat.c
 
 ## end   gnulib module statat
 
@@ -2713,7 +2723,7 @@ EXTRA_DIST += stdlib.in.h
 
 EXTRA_DIST += stpcpy.c
 
-EXTRA_libgnulib_a_SOURCES += stpcpy.c
+EXTRA_libgnulib_la_SOURCES += stpcpy.c
 
 ## end   gnulib module stpcpy
 
@@ -2722,7 +2732,7 @@ EXTRA_libgnulib_a_SOURCES += stpcpy.c
 
 EXTRA_DIST += strcasecmp.c strncasecmp.c
 
-EXTRA_libgnulib_a_SOURCES += strcasecmp.c strncasecmp.c
+EXTRA_libgnulib_la_SOURCES += strcasecmp.c strncasecmp.c
 
 ## end   gnulib module strcase
 
@@ -2731,7 +2741,7 @@ EXTRA_libgnulib_a_SOURCES += strcasecmp.c strncasecmp.c
 
 EXTRA_DIST += str-two-way.h strcasestr.c
 
-EXTRA_libgnulib_a_SOURCES += strcasestr.c
+libgnulib_la_SOURCES += strcasestr.c
 
 ## end   gnulib module strcasestr-simple
 
@@ -2740,7 +2750,7 @@ EXTRA_libgnulib_a_SOURCES += strcasestr.c
 
 EXTRA_DIST += strdup.c
 
-EXTRA_libgnulib_a_SOURCES += strdup.c
+EXTRA_libgnulib_la_SOURCES += strdup.c
 
 ## end   gnulib module strdup-posix
 
@@ -2756,7 +2766,7 @@ EXTRA_DIST += streq.h
 
 EXTRA_DIST += strerror.c
 
-EXTRA_libgnulib_a_SOURCES += strerror.c
+EXTRA_libgnulib_la_SOURCES += strerror.c
 
 ## end   gnulib module strerror
 
@@ -2765,7 +2775,7 @@ EXTRA_libgnulib_a_SOURCES += strerror.c
 
 EXTRA_DIST += strerror-override.c strerror-override.h
 
-EXTRA_libgnulib_a_SOURCES += strerror-override.c
+libgnulib_la_SOURCES += strerror-override.c
 
 ## end   gnulib module strerror-override
 
@@ -2774,13 +2784,13 @@ EXTRA_libgnulib_a_SOURCES += strerror-override.c
 
 EXTRA_DIST += strerror_r.c
 
-EXTRA_libgnulib_a_SOURCES += strerror_r.c
+libgnulib_la_SOURCES += strerror_r.c
 
 ## end   gnulib module strerror_r-posix
 
 ## begin gnulib module strftime
 
-libgnulib_a_SOURCES += strftime.c
+libgnulib_la_SOURCES += strftime.c
 
 EXTRA_DIST += strftime.h
 
@@ -2922,7 +2932,7 @@ EXTRA_DIST += strings.in.h
 
 EXTRA_DIST += strndup.c
 
-EXTRA_libgnulib_a_SOURCES += strndup.c
+EXTRA_libgnulib_la_SOURCES += strndup.c
 
 ## end   gnulib module strndup
 
@@ -2931,13 +2941,13 @@ EXTRA_libgnulib_a_SOURCES += strndup.c
 
 EXTRA_DIST += strnlen.c
 
-EXTRA_libgnulib_a_SOURCES += strnlen.c
+EXTRA_libgnulib_la_SOURCES += strnlen.c
 
 ## end   gnulib module strnlen
 
 ## begin gnulib module strnlen1
 
-libgnulib_a_SOURCES += strnlen1.h strnlen1.c
+libgnulib_la_SOURCES += strnlen1.h strnlen1.c
 
 ## end   gnulib module strnlen1
 
@@ -2946,7 +2956,7 @@ libgnulib_a_SOURCES += strnlen1.h strnlen1.c
 
 EXTRA_DIST += str-two-way.h strstr.c
 
-EXTRA_libgnulib_a_SOURCES += strstr.c
+libgnulib_la_SOURCES += strstr.c
 
 ## end   gnulib module strstr-simple
 
@@ -2955,7 +2965,7 @@ EXTRA_libgnulib_a_SOURCES += strstr.c
 
 EXTRA_DIST += strtol.c strtoul.c strtoull.c
 
-EXTRA_libgnulib_a_SOURCES += strtol.c strtoul.c strtoull.c
+EXTRA_libgnulib_la_SOURCES += strtol.c strtoul.c strtoull.c
 
 ## end   gnulib module strtoull
 
@@ -2964,14 +2974,14 @@ EXTRA_libgnulib_a_SOURCES += strtol.c strtoul.c strtoull.c
 
 EXTRA_DIST += strtoimax.c strtoumax.c
 
-EXTRA_libgnulib_a_SOURCES += strtoimax.c strtoumax.c
+EXTRA_libgnulib_la_SOURCES += strtoimax.c strtoumax.c
 
 ## end   gnulib module strtoumax
 
 ## begin gnulib module sys_socket
 
 BUILT_SOURCES += sys/socket.h
-libgnulib_a_SOURCES += sys_socket.c
+libgnulib_la_SOURCES += sys_socket.c
 
 # We need the following in order to create <sys/socket.h> when the system
 # doesn't have one that works with the given compiler.
@@ -3228,7 +3238,7 @@ EXTRA_DIST += sys_wait.in.h
 
 ## begin gnulib module threadlib
 
-libgnulib_a_SOURCES += glthread/threadlib.c
+libgnulib_la_SOURCES += glthread/threadlib.c
 
 EXTRA_DIST += $(top_srcdir)/build-aux/config.rpath
 
@@ -3287,7 +3297,7 @@ EXTRA_DIST += time.in.h
 
 EXTRA_DIST += time_r.c
 
-EXTRA_libgnulib_a_SOURCES += time_r.c
+EXTRA_libgnulib_la_SOURCES += time_r.c
 
 ## end   gnulib module time_r
 
@@ -3296,7 +3306,7 @@ EXTRA_libgnulib_a_SOURCES += time_r.c
 
 EXTRA_DIST += time-internal.h time_rz.c
 
-EXTRA_libgnulib_a_SOURCES += time_rz.c
+EXTRA_libgnulib_la_SOURCES += time_rz.c
 
 ## end   gnulib module time_rz
 
@@ -3305,13 +3315,13 @@ EXTRA_libgnulib_a_SOURCES += time_rz.c
 
 EXTRA_DIST += mktime-internal.h timegm.c
 
-EXTRA_libgnulib_a_SOURCES += timegm.c
+EXTRA_libgnulib_la_SOURCES += timegm.c
 
 ## end   gnulib module timegm
 
 ## begin gnulib module timespec
 
-libgnulib_a_SOURCES += timespec.c
+libgnulib_la_SOURCES += timespec.c
 
 EXTRA_DIST += timespec.h
 
@@ -3322,7 +3332,7 @@ EXTRA_DIST += timespec.h
 
 EXTRA_DIST += trunc.c
 
-EXTRA_libgnulib_a_SOURCES += trunc.c
+EXTRA_libgnulib_la_SOURCES += trunc.c
 
 ## end   gnulib module trunc
 
@@ -3331,14 +3341,14 @@ EXTRA_libgnulib_a_SOURCES += trunc.c
 
 EXTRA_DIST += uname.c
 
-EXTRA_libgnulib_a_SOURCES += uname.c
+EXTRA_libgnulib_la_SOURCES += uname.c
 
 ## end   gnulib module uname
 
 ## begin gnulib module unistd
 
 BUILT_SOURCES += unistd.h
-libgnulib_a_SOURCES += unistd.c
+libgnulib_la_SOURCES += unistd.c
 
 # We need the following in order to create an empty placeholder for
 # <unistd.h> when the system doesn't have one.
@@ -3491,7 +3501,7 @@ EXTRA_DIST += unistd.in.h
 
 ## begin gnulib module unistd-safer
 
-libgnulib_a_SOURCES += dup-safer.c fd-safer.c pipe-safer.c
+libgnulib_la_SOURCES += dup-safer.c fd-safer.c pipe-safer.c
 
 EXTRA_DIST += unistd--.h unistd-safer.h
 
@@ -3532,7 +3542,7 @@ EXTRA_DIST += localcharset.h uniwidth.in.h
 ## begin gnulib module uniwidth/width
 
 if LIBUNISTRING_COMPILE_UNIWIDTH_WIDTH
-libgnulib_a_SOURCES += uniwidth/width.c
+libgnulib_la_SOURCES += uniwidth/width.c
 endif
 
 EXTRA_DIST += uniwidth/cjk.h
@@ -3544,7 +3554,7 @@ EXTRA_DIST += uniwidth/cjk.h
 
 EXTRA_DIST += unlink.c
 
-EXTRA_libgnulib_a_SOURCES += unlink.c
+EXTRA_libgnulib_la_SOURCES += unlink.c
 
 ## end   gnulib module unlink
 
@@ -3553,7 +3563,9 @@ EXTRA_libgnulib_a_SOURCES += unlink.c
 
 EXTRA_DIST += at-func.c unlinkat.c
 
-EXTRA_libgnulib_a_SOURCES += at-func.c unlinkat.c
+EXTRA_libgnulib_la_SOURCES += at-func.c unlinkat.c
+
+libgnulib_la_SOURCES += unlinkat.c
 
 ## end   gnulib module unlinkat
 
@@ -3562,7 +3574,7 @@ EXTRA_libgnulib_a_SOURCES += at-func.c unlinkat.c
 
 EXTRA_DIST += unsetenv.c
 
-EXTRA_libgnulib_a_SOURCES += unsetenv.c
+libgnulib_la_SOURCES += unsetenv.c
 
 ## end   gnulib module unsetenv
 
@@ -3585,7 +3597,7 @@ EXTRA_DIST += $(top_srcdir)/build-aux/useless-if-before-free
 
 EXTRA_DIST += asnprintf.c float+.h printf-args.c printf-args.h printf-parse.c printf-parse.h vasnprintf.c vasnprintf.h
 
-EXTRA_libgnulib_a_SOURCES += asnprintf.c printf-args.c printf-parse.c vasnprintf.c
+EXTRA_libgnulib_la_SOURCES += asnprintf.c printf-args.c printf-parse.c vasnprintf.c
 
 ## end   gnulib module vasnprintf
 
@@ -3605,13 +3617,13 @@ EXTRA_DIST += verify.h
 
 ## begin gnulib module version-etc
 
-libgnulib_a_SOURCES += version-etc.h version-etc.c
+libgnulib_la_SOURCES += version-etc.h version-etc.c
 
 ## end   gnulib module version-etc
 
 ## begin gnulib module version-etc-fsf
 
-libgnulib_a_SOURCES += version-etc-fsf.c
+libgnulib_la_SOURCES += version-etc-fsf.c
 
 ## end   gnulib module version-etc-fsf
 
@@ -3741,14 +3753,14 @@ EXTRA_DIST += wchar.in.h
 
 EXTRA_DIST += wcrtomb.c
 
-EXTRA_libgnulib_a_SOURCES += wcrtomb.c
+EXTRA_libgnulib_la_SOURCES += wcrtomb.c
 
 ## end   gnulib module wcrtomb
 
 ## begin gnulib module wctype-h
 
 BUILT_SOURCES += wctype.h
-libgnulib_a_SOURCES += wctype-h.c
+libgnulib_la_SOURCES += wctype-h.c
 
 # We need the following in order to create <wctype.h> when the system
 # doesn't have one that works with the given compiler.
@@ -3790,13 +3802,13 @@ EXTRA_DIST += wctype.in.h
 
 EXTRA_DIST += wcwidth.c
 
-EXTRA_libgnulib_a_SOURCES += wcwidth.c
+libgnulib_la_SOURCES += wcwidth.c
 
 ## end   gnulib module wcwidth
 
 ## begin gnulib module xalloc
 
-libgnulib_a_SOURCES += xmalloc.c
+libgnulib_la_SOURCES += xmalloc.c
 
 EXTRA_DIST += xalloc.h
 
@@ -3804,7 +3816,7 @@ EXTRA_DIST += xalloc.h
 
 ## begin gnulib module xalloc-die
 
-libgnulib_a_SOURCES += xalloc-die.c
+libgnulib_la_SOURCES += xalloc-die.c
 
 ## end   gnulib module xalloc-die
 
@@ -3817,7 +3829,7 @@ EXTRA_DIST += xalloc-oversized.h
 
 ## begin gnulib module xgetcwd
 
-libgnulib_a_SOURCES += xgetcwd.c
+libgnulib_la_SOURCES += xgetcwd.c
 
 EXTRA_DIST += xgetcwd.h
 
@@ -3825,19 +3837,19 @@ EXTRA_DIST += xgetcwd.h
 
 ## begin gnulib module xsize
 
-libgnulib_a_SOURCES += xsize.h xsize.c
+libgnulib_la_SOURCES += xsize.h xsize.c
 
 ## end   gnulib module xsize
 
 ## begin gnulib module xstrndup
 
-libgnulib_a_SOURCES += xstrndup.h xstrndup.c
+libgnulib_la_SOURCES += xstrndup.h xstrndup.c
 
 ## end   gnulib module xstrndup
 
 ## begin gnulib module xstrtod
 
-libgnulib_a_SOURCES += xstrtod.c
+libgnulib_la_SOURCES += xstrtod.c
 
 EXTRA_DIST += xstrtod.h
 
@@ -3845,7 +3857,7 @@ EXTRA_DIST += xstrtod.h
 
 ## begin gnulib module xstrtol
 
-libgnulib_a_SOURCES += xstrtol.c xstrtoul.c xstrtol-error.c
+libgnulib_la_SOURCES += xstrtol.c xstrtoul.c xstrtol-error.c
 
 EXTRA_DIST += xstrtol.h
 
@@ -3853,13 +3865,13 @@ EXTRA_DIST += xstrtol.h
 
 ## begin gnulib module xstrtoumax
 
-libgnulib_a_SOURCES += xstrtoumax.c
+libgnulib_la_SOURCES += xstrtoumax.c
 
 ## end   gnulib module xstrtoumax
 
 ## begin gnulib module yesno
 
-libgnulib_a_SOURCES += yesno.c
+libgnulib_la_SOURCES += yesno.c
 
 EXTRA_DIST += yesno.h
 

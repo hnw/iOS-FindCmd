@@ -4,11 +4,11 @@ localedir = $(datadir)/locale
 bin_PROGRAMS = xargs
 man_MANS = xargs.1
 AM_CPPFLAGS = -I.. -I../gl/lib -I$(top_srcdir)/gl/lib -I$(top_srcdir)/lib -I../intl -DLOCALEDIR=\"$(localedir)\"
-LDADD = ../lib/libfind.a ../gl/lib/libgnulib.a $(LIB_CLOSE) $(LIBINTL)
+LDADD = ../lib/libfind.la ../gl/lib/libgnulib.la $(LIB_CLOSE) $(LIBINTL)
 EXTRA_DIST = $(man_MANS)
 SUBDIRS = . testsuite
 
-$(PROGRAMS): ../lib/libfind.a ../gl/lib/libgnulib.a
+$(PROGRAMS): ../lib/libfind.la ../gl/lib/libgnulib.la
 
 dist-hook: findutils-check-manpages
 

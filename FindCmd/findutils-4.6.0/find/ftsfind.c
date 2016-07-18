@@ -88,7 +88,9 @@ static int curr_fd = -1;
 static bool find (char *arg) __attribute_warn_unused_result__;
 static bool process_all_startpoints (int argc, char *argv[]) __attribute_warn_unused_result__;
 
-
+#include <unistd.h>
+#include <pthread.h>
+#define exit(retval) {close(STDOUT_FILENO);close(STDERR_FILENO);pthread_exit((void *)retval);}
 
 static void
 left_dir (void)
@@ -644,11 +646,10 @@ process_all_startpoints (int argc, char *argv[])
   return true;
 }
 
-
-
+extern int find_main (int argc, char **argv);
 
 int
-main (int argc, char **argv)
+find_main (int argc, char **argv)
 {
   int end_of_leading_options = 0; /* First arg after any -H/-L etc. */
   struct predicate *eval_tree;

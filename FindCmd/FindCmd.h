@@ -16,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char FindCmdVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <FindCmd/PublicHeader.h>
 
-
+extern int find_main (int argc, char **argv);

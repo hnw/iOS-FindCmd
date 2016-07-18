@@ -2,15 +2,16 @@ AUTOMAKE_OPTIONS = std-options
 AM_CFLAGS = $(WARN_CFLAGS)
 localedir = $(datadir)/locale
 
-noinst_LIBRARIES = libfindtools.a
-libfindtools_a_SOURCES = finddata.c fstype.c parser.c pred.c exec.c tree.c util.c sharefile.c print.c
+noinst_LTLIBRARIES = libfindtools.la
+libfindtools_la_SOURCES = finddata.c fstype.c parser.c pred.c exec.c tree.c util.c sharefile.c print.c
 
 # We always build two versions of find, one with fts (called "find"),
 # one without (called "oldfind").  The oldfind binary is no longer
 # installed.
-bin_PROGRAMS     = find
+lib_LTLIBRARIES = libftsfind.la
+libftsfind_la_SOURCES = ftsfind.c
+libftsfind_la_LIBADD = ./libfindtools.la ../lib/libfind.la ../gl/lib/libgnulib.la $(LIBINTL) $(LIB_CLOCK_GETTIME) $(LIB_EACCESS) $(LIB_SELINUX) $(LIB_CLOSE) $(MODF_LIBM) $(FINDLIBS) $(GETHOSTNAME_LIB) $(LIB_EACCESS)
 check_PROGRAMS   = oldfind
-find_SOURCES     = ftsfind.c
 oldfind_SOURCES  = oldfind.c
 man_MANS         = find.1
 
